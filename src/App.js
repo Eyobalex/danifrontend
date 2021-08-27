@@ -1,0 +1,31 @@
+import React, { Component } from 'react';
+import Home from './components/Home/Home';
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+import listingSingle from './components/PostDetails/ListingSingle';
+import Auth from './components/Auth/Auth'
+import Admin from './components/Form/Admin'
+
+
+import Navbar from './components/Navbar/Navbar';
+
+
+class App extends Component {
+  render(){
+  return (
+
+    <Router>
+      <div>
+        <Route exact path='/' component={Home}/>
+        <Route exact path='/posts' component={Home}/>
+        <Route path="/search" exact component={Home} />
+        <Route path="/posts/:id" exact component={listingSingle} />
+    
+        <Route exact path="/Auth" component={Auth}/>
+        <Route exact path="/Admin" component={Admin}/>
+      
+      </div>
+    </Router>
+  )
+}}
+
+export default App;
