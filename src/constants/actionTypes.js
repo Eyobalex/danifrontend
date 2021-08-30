@@ -15,3 +15,6 @@ export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const EDIT_COMMENT = 'EDIT_COMMENT';
 export const RATE = 'RATE';
 
+
+
+export const GET_USERS = 'GET_USERS'; 

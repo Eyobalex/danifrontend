@@ -1,4 +1,4 @@
-import { START_LOADING, END_LOADING, FETCH_ALL, FETCH_POST, FETCH_BY_SEARCH, CREATE, UPDATE, DELETE, LIKE } from '../constants/actionTypes';
+import { START_LOADING, END_LOADING, FETCH_ALL, FETCH_POST, FETCH_BY_SEARCH, CREATE, UPDATE, DELETE, LIKE, RATE } from '../constants/actionTypes';
 import * as api from '../api/index.js';
 
 export const getPost = (id) => async (dispatch) => {
@@ -73,7 +73,9 @@ export const deletePost = (id) => async (dispatch) => {
 
 export const rate = (listingId, rating) => async (dispatch) => {
   try {
-    await {data} = await api.rate(listingId, rating);
+    const {data} = await api.rate(listingId, rating);
+
+    dispatch({type: RATE, payload : data})
   } catch (error) {
     
   }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import Home from './components/Home/Home';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import listingSingle from './components/PostDetails/ListingSingle';
@@ -7,12 +7,19 @@ import Admin from './components/Form/Admin'
 
 
 import Navbar from './components/Navbar/Navbar';
+import Index from './components/Admin/Index';
+import User from './components/Admin/Users/User';
 
 
-class App extends Component {
-  render(){
+import {useSelector, useDispatch} from 'react-redux';
+
+import {getUsers} from './actions/users';
+
+const App = () => {
+
+  
   return (
-
+    
     <Router>
       <div>
         <Route exact path='/' component={Home}/>
@@ -22,10 +29,13 @@ class App extends Component {
     
         <Route exact path="/Auth" component={Auth}/>
         <Route exact path="/Admin" component={Admin}/>
+        <Route exact path="/Admins" component={Index}/>
+        {/* <Route exact path="/Admins/users" component={() => <User users={users} />}/> */}
+
       
       </div>
     </Router>
   )
-}}
+}
 
 export default App;

@@ -110,7 +110,9 @@ import Pagination from '../Pagination';
           
           <li><a href="about.html">About</a></li>
           <li className="mr-5"><a href="contact.html">Contact</a></li>
-             
+          <li>
+          <span className="border-left pl-xl-4"> <Button  component={Link} to="/Admins" variant="contained" color="primary">Admin</Button></span>
+          </li>
     
          
           
