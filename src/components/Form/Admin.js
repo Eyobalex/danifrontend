@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Container, Grow, Grid, AppBar, TextField, Button, Paper } from '@material-ui/core';
+import { Container,Typography, Grow, Grid, AppBar, TextField, Button, Paper } from '@material-ui/core';
+
 import { useDispatch } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import ChipInput from 'material-ui-chip-input';
@@ -9,6 +10,7 @@ import Posts from '../Posts/Posts';
 import Form from './Form';
 import Pagination from '../PaginationAdmin';
 import useStyles from './styles';
+import Navbar from '../Navbar/Navbar';
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -20,7 +22,7 @@ const Admin = () => {
   const query = useQuery();
   const page = query.get('page') || 1;
   const searchQuery = query.get('searchQuery');
-
+  const user = JSON.parse(localStorage.getItem('profile'));
   const dispatch = useDispatch();
 
   const [search, setSearch] = useState('');
@@ -45,9 +47,41 @@ const Admin = () => {
   const handleAddChip = (tag) => setTags([...tags, tag]);
 
   const handleDeleteChip = (chipToDelete) => setTags(tags.filter((tag) => tag !== chipToDelete));
-
+  if (!user?.result?.name) {
+    return (
+      <Paper className={classes.paper} elevation={6}>
+        <Typography variant="h6" align="center">
+          Please Sign In to create your own Listing
+        </Typography>
+      </Paper>
+    );
+  }
   return (
-    <Grow in>
+    <div className="site-wrap">
+    <Navbar/>
+    <div className="overlay" style={{backgroundImage: "url(./images/listingp.jpeg)"}} dat-aos="fade" >
+
+<div className="container">
+ <div className="row align-items-center justify-content-center text-center">
+
+   <div className="col-md-10" data-aos="fade-up" data-aos-delay="400">
+     
+     
+     <h1 style={{color: "white", fontWeight: "bolder"}}>Managing Listing</h1>
+     
+    
+
+     
+   </div>
+ </div>
+</div>
+</div> 
+      
+        <div className="container">
+        <div className="row">
+                <div className="col-12">
+
+          <Grow in>
       <Container maxWidth="xl">
         <Grid container justify="space-between" alignItems="stretch" spacing={3} className={classes.gridContainer}>
           <Grid item xs={12} sm={6} md={8}>
@@ -65,6 +99,11 @@ const Admin = () => {
         </Grid>
       </Container>
     </Grow>
+    </div>
+    </div>
+    </div>
+    </div>
+
   );
 };
 

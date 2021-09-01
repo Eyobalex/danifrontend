@@ -17,6 +17,7 @@ import useStyles from './styles';
 import { getPostsBySearch } from '../../actions/posts';
 
 import Pagination from '../Pagination';
+import Navbar from "../Navbar/Navbar";
 
 
 /*className Home extends Component {
@@ -83,72 +84,7 @@ import Pagination from '../Pagination';
        
 
         <div className="site-wrap">
-            <div className="site-mobile-menu">
-             <div className="site-mobile-menu-header">
-              <div className="site-mobile-menu-close mt-3">
-               <span className="icon-close2 js-menu-toggle"></span>
-              </div>
-             </div>
-            <div className="site-mobile-menu-body"></div>
-           </div>
-           <header className="site-navbar container py-0 " role="banner">
-             
-
-
-  <div id="hom" className="row align-items-center">
-    <div className="col-6 col-xl-2">
-      <h1 className="mb-0 site-logo">
-          <a href="index.html" className="text-white mb-0">
-              <img src="images/Logo1.png" style={{width:250}}/>
-          </a></h1>
-    </div>
-   
-    <div className="col-12 col-md-10 d-none d-xl-block">
-      <nav className="site-navigation position-relative text-right" role="navigation">
-
-        <ul className="site-menu js-clone-nav mr-auto d-none d-lg-block">
-          
-          <li><a href="about.html">About</a></li>
-          <li className="mr-5"><a href="contact.html">Contact</a></li>
-          <li>
-          <span className="border-left pl-xl-4"> <Button  component={Link} to="/Admins" variant="contained" color="primary">Admin</Button></span>
-          </li>
-    
-         
-          
-        {user?.result ? (
-          
-          <li>
-
-           <span style={{alignItems:"inline" }} className="border-left pl-xl-4">
-           <Button  component={Link} to="/Admin" style={{marginRight:8, color:"#022121"}} variant="contained"  >Upload</Button>
-
-            <Button variant="contained" color="secondary" onClick={logout}>Logout</Button>
-           
-          </span>
-          </li>
-         
-        ) : (
-          <li>
-          <span className="border-left pl-xl-4"> <Button  component={Link} to="/auth" variant="contained" color="primary">Sign In</Button></span>
-          </li>
-        )}
-    
-
-         
-        </ul>
-      </nav>
-    </div>
-
-
-    <div className="d-inline-block d-xl-none ml-auto py-3 col-6 text-right" style={{position: "relative", top: 3}}>
-      <a href="#" className="site-menu-toggle js-menu-toggle text-white"><span className="icon-menu h3"></span></a>
-    </div>
-
-  </div>
-
-
-</header>
+            <Navbar/>
 <div className="site-blocks-cover overlay" style={{backgroundImage: "url(./images/hero_2.jpg)"}}>
       <div className="container">
         <div className="row align-items-center justify-content-center text-center">
@@ -158,19 +94,19 @@ import Pagination from '../Pagination';
 
             <div className="form-search-wrap" data-aos="fade-up" data-aos-delay="200">
               <form method="post">
-                <div className="row align-items-center" style={{display: 'flex', justifyContent: 'center',alignItems: 'center'}}>
+              <div  style={{display: 'flex', justifyContent: 'center',alignItems: 'center'}}>
                   
                   <div className="col-lg-12 mb-4 mb-xl-0 col-xl-5">
-                    <div className="wrap-icon">
-                      <span className="icon icon-building"></span>
-                      <TextField onKeyDown={handleKeyPress} name="search" style={{  backgroundColor: 'white',}} variant="outlined" label="Company Name" fullWidth value={search} onChange={(e) => setSearch(e.target.value)} />
+                    <div >
+                   
+                      <TextField onKeyDown={handleKeyPress} name="search" style={{  backgroundColor: 'white',}} variant="filled" label="Company Name" fullWidth value={search} onChange={(e) => setSearch(e.target.value)} />
                    
                     </div>
                     
                   </div>
               
                   <div className="">
-                  <Button onClick={searchPost}  variant="contained" color="#ddff">Search</Button>
+                  <Button onClick={searchPost}  variant="contained" color="secondary">Search</Button>
                   </div>
                   
                 </div>
