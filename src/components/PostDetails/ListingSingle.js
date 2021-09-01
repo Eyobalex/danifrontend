@@ -10,7 +10,10 @@ import { Comment } from './Comment/Comment';
 import { PostComment } from './Comment/PostComment';
 
 const ListingSingle = () => {
-  const { post, posts, isLoading } = useSelector((state) => state.posts);
+  const { post, posts, isLoading, comments} = useSelector((state) =>{
+    console.log(state);
+    return state.posts
+  });
   const dispatch = useDispatch();
   const history = useHistory();
   const classes = useStyles();
@@ -254,7 +257,7 @@ const ListingSingle = () => {
             )}
             )}
               
-            
+           {/* <h1>coments: {JSON.stringify(comments)}</h1> */}
           </div>
           
           <section className="d-none d-md-block">

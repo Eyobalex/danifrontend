@@ -25,7 +25,7 @@ const App = () => {
         <Route exact path='/' component={Home}/>
         <Route exact path='/posts' component={Home}/>
         <Route path="/search" exact component={Home} />
-        <Route path="/posts/:id" exact component={listingSingle} />
+        <Route path="/:id" exact component={listingSingle} />
     
         <Route exact path="/Auth" component={Auth}/>
         <Route exact path="/Admin" component={Admin}/>
