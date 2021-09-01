@@ -9,7 +9,7 @@ import Admin from './components/Form/Admin'
 import Navbar from './components/Navbar/Navbar';
 import Index from './components/Admin/Index';
 import User from './components/Admin/Users/User';
-
+import Dashboard from './components/AdminSite/AdminDashboard/Dashboard'
 
 import {useSelector, useDispatch} from 'react-redux';
 
@@ -22,13 +22,19 @@ const App = () => {
     
     <Router>
       <div>
-        <Route exact path='/' component={Home}/>
-        <Route exact path='/posts' component={Home}/>
-        <Route path="/search" exact component={Home} />
-        <Route path="/:id" exact component={listingSingle} />
+      
+      <Route exact path='/' component={Home}/>
+       
+       <Route exact path='/posts' component={Home}/>
+      
+       <Route exact path="/search" exact component={Home} />
+        
+        <Route exact strict path="/:id" exact component={listingSingle}/> 
     
         <Route exact path="/Auth" component={Auth}/>
         <Route exact path="/Admin" component={Admin}/>
+       
+        <Route path="/adminDashboard" component={Dashboard}/>
         <Route exact path="/Admins" component={Index}/>
         {/* <Route exact path="/Admins/users" component={() => <User users={users} />}/> */}
 

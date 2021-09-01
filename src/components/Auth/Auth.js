@@ -10,6 +10,7 @@ import { signin, signup } from '../../actions/auth';
 import { AUTH } from '../../constants/actionTypes';
 import useStyles from './styles';
 import Input from './Input';
+import Navbar from '../Navbar/Navbar';
 
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
@@ -58,51 +59,7 @@ const SignUp = () => {
 
   return (
     <div className="site-wrap">
-
-    <div className="site-mobile-menu">
-      <div className="site-mobile-menu-header">
-       <div className="site-mobile-menu-close mt-3">
-        <span className="icon-close2 js-menu-toggle"></span>
-       </div>
-      </div>
-     <div className="site-mobile-menu-body"></div>
-    </div>
-<header className="site-navbar container py-0 " role="banner">
-      
-
-
-<div id="hom" className="row align-items-center">
-<div className="col-6 col-xl-2">
-<h1 className="mb-0 site-logo">
-   <a href="home.js" className="text-white mb-0">
-       <img src="images/img_1.jpg" style={{width:150}}/>
-   </a></h1>
-</div>
-
-<div className="col-12 col-md-10 d-none d-xl-block">
-<nav className="site-navigation position-relative text-right" role="navigation">
-
- <ul className="site-menu js-clone-nav mr-auto d-none d-lg-block">
-   
-   <li><a href="about.js">About</a></li>
-   <li className="mr-5"><a href="contact.js">Contact</a></li>
-
-   <li className="ml-xl-3 login"><a href="login.js"><span className="border-left pl-xl-4"></span>Log In</a></li>
-
-   <li><a href="register.js" className="cta"><span className="bg-primary text-white rounded">Register</span></a></li>
- </ul>
-</nav>
-</div>
-
-
-<div className="d-inline-block d-xl-none ml-auto py-3 col-6 text-right" style={{position: "relative", top: 3}}>
-<a href="#" className="site-menu-toggle js-menu-toggle text-white"><span className="icon-menu h3"></span></a>
-</div>
-
-</div>
-
-
-</header>
+<Navbar/>
 
 <div className="overlay" style={{backgroundImage: "url(./images/listingp.jpeg)"}} dat-aos="fade" >
 

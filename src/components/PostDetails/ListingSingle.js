@@ -8,7 +8,9 @@ import { getPost, getPostsBySearch } from '../../actions/posts';
 import useStyles from './styles';
 import { Comment } from './Comment/Comment';
 import { PostComment } from './Comment/PostComment';
-
+import Navbar from '../Navbar/Navbar';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 const ListingSingle = () => {
   const { post, posts, isLoading, comments} = useSelector((state) =>{
     console.log(state);
@@ -37,51 +39,7 @@ const ListingSingle = () => {
   const recommendedPosts = posts.filter(({ _id }) => _id !== post._id);
   return(
 <div className="site-wrap">
-
-<div className="site-mobile-menu">
-  <div className="site-mobile-menu-header">
-   <div className="site-mobile-menu-close mt-3">
-    <span className="icon-close2 js-menu-toggle"></span>
-   </div>
-  </div>
- <div className="site-mobile-menu-body"></div>
-</div>
-<header className="site-navbar container py-0 " role="banner">
-      
-
-
-<div id="hom" className="row align-items-center">
-<div className="col-6 col-xl-2">
-<h1 className="mb-0 site-logo">
-   <a href="home.js" className="text-white mb-0">
-       <img src="images/img_1.jpg" style={{width:150}}/>
-   </a></h1>
-</div>
-
-<div className="col-12 col-md-10 d-none d-xl-block">
-<nav className="site-navigation position-relative text-right" role="navigation">
-
- <ul className="site-menu js-clone-nav mr-auto d-none d-lg-block">
-   
-   <li><a href="about.js">About</a></li>
-   <li className="mr-5"><a href="contact.js">Contact</a></li>
-
-   <li className="ml-xl-3 login"><a href="login.js"><span className="border-left pl-xl-4"></span>Log In</a></li>
-
-   <li><a href="register.js" className="cta"><span className="bg-primary text-white rounded">Register</span></a></li>
- </ul>
-</nav>
-</div>
-
-
-<div className="d-inline-block d-xl-none ml-auto py-3 col-6 text-right" style={{position: "relative", top: 3}}>
-<a href="#" className="site-menu-toggle js-menu-toggle text-white"><span className="icon-menu h3"></span></a>
-</div>
-
-</div>
-
-
-</header>
+<Navbar/>
 
 <div className="overlay" style={{backgroundImage: "url(./images/listingp.jpeg)"}} dat-aos="fade" >
 
@@ -178,7 +136,7 @@ const ListingSingle = () => {
                   
                   
                   <a style={{float: "right", marginRight: 50, marginTop: 25}} href="#" className="bookmark"><span style={{color: "red"}} className="icon-heart"></span></a>
-                  <h3 contenteditable="true" style={{paddingTop: 25 }}><a href="listings-single.html">DES General Trading PLC</a></h3>
+                  <h3  style={{paddingTop: 25 }}><a href="listings-single.html">DES General Trading PLC</a></h3>
                   
                   <p style={{paddingBottom: 5}} className="mb-0">
                     <span className="icon-star text-warning"></span>
@@ -193,10 +151,7 @@ const ListingSingle = () => {
                      <ul className="topside">
                     
                     
-                      <li><a href="#"><span className="fa fa-map-marker"></span> Get Direction</a></li> 
-                      <li><a href="#"><span className="fa fa-phone" ></span> Call now</a></li> 
-                      <li><a href="#"><span className="fa fa-envelope" ></span> Sent-email</a></li> 
-                      <li>  <a href="#"><span className="fa fa-share" ></span>Share</a></li> 
+                    
                       <li>  <a href="#" data-target="#mymodel" data-toggle="modal"><span className="fa fa-comments" ></span>Leave a review</a></li> 
                   </ul>
    
@@ -241,12 +196,47 @@ const ListingSingle = () => {
               <div className="row">
               
                 <div className="col-lg-12">
-                <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5089.027915764806!2d38.75787871067382!3d8.983121094747325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b84402c5b6d99%3A0x1ff628bbdc473237!2zR290ZXJhIFNxdWFyZSDhjI7hibDhiKsg4Yib4Yiz4YiI4Yyr!5e0!3m2!1sen!2set!4v1625149301212!5m2!1sen!2set" width="100" height="300" style={{border:0}} allowfullscreen=""></iframe></p>
+                <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5089.027915764806!2d38.75787871067382!3d8.983121094747325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b84402c5b6d99%3A0x1ff628bbdc473237!2zR290ZXJhIFNxdWFyZSDhjI7hibDhiKsg4Yib4Yiz4YiI4Yyr!5e0!3m2!1sen!2set!4v1625149301212!5m2!1sen!2set" width="100" height="300" style={{border:0}} ></iframe></p>
               </div>
             
               </div>
             </div>
             <h4 style={{textAlign: "center"}} >DES Products</h4>
+                  
+                  <div  className="row">
+                  <div className="container p-5">
+          <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
+            <div className="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div  className="carousel-inner">
+              <div   className="carousel-item active">
+                <img style={{height:400,width:650}} src={post.logo} className="d-block w-100" alt="..." />
+              
+              </div>
+              <div   className="carousel-item">
+              <img style={{height:400,width:650}} src={post.logo} className="d-block w-100" alt="..." />
+              
+              </div>
+              <div className="carousel-item">
+                <img src="https://therichpost.com/wp-content/uploads/2021/05/Slider-Third-Carousel.png" className="d-block w-100" alt="..." />
+              
+              </div>
+            </div>
+            <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Previous</span>
+            </button>
+            <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+              <span className="carousel-control-next-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Next</span>
+            </button>
+          </div>
+          </div>
+                      
+                  </div>
                   
             {post.comments.map( comment => {
               console.log(comment);
@@ -333,148 +323,7 @@ const ListingSingle = () => {
 
      
      
-        <div style={{marginBottom: 50}} className="container">
-          
-          
-          <div className="row">
-            <div className="col-12">
-              <h3 className="h3 mb-3 text-black">Related Listings</h3>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-12  block-13">
-              <div className="owl-carousel nonloop-block-13">
-                
-                <div className="d-block d-md-flex listing vertical">
-                  <div style={{borderColor: "29, 28, 28", borderRadius:5, backgroundColor: "white"}}>
-            
-                    <img src="images/72.jpg" className="img-thumbnail rounded-circle" style={{marginLeft: 50, marginLeft: 50, width: 120, height: 120}}/>
-                    
-                  
-                  
-                  <div className="text p-4" >
-                    <h3 className="h5 text-black" style={{fontWeight: "bold"}}><a href="listings-single.html">DES General Trading PLC</a></h3>
-                    <span style={{fontWeight: "bolder", fontSize: "small"}} className="category ">Listed in <a href="#"> Agriculture</a></span>
-                    <br/>
-                    <p className="mb-0" style={{fontSize: "small, fontFamily: Arial, Helvetica, sansSerif"}}>DES General Trading Private Limited Company ....</p>
-                    <br/>
-                    <div style={{fontSize: "medium"}}  className="row" >
-                    <div className="fa fa-location-arrow " style={{marginRight: 15}}> Addis Ababa, ET</div> <div className="fa fa-phone" style={{marginRight: 15}}>0925001221</div> <a href="#" className="fa fa-globe">Vist website</a>
-                    </div> 
-                  
-                  
-                  </div>
-                  <br/>
-                  
-                  </div>
-                </div>
-  
-               
-  
-                <div className="d-block d-md-flex listing vertical">
-                  <div style={{borderColor: "29, 28, 28", borderRadius:5 ,backgroundColor: "white"}} >
-            
-                    <img src="images/72.jpg" className="img-thumbnail rounded-circle" style={{marginLeft: 60, width: 120, height: 120 }}/>
-                    
-                  
-                  
-                  <div className="text p-4" >
-                    <h3 className="h5 text-black" style={{fontWeight: "bold"}}><a href="listings-single.html">DES General Trading PLC</a></h3>
-                    <span style={{fontWeight: "bolder", fontSize: "small"}} className="category ">Listed in <a href="#"> Agriculture</a></span>
-                    <br/>
-                    <p className="mb-0" style={{fontSize: "small, fontFamily: Arial, Helvetica, sansSerif"}} >DES General Trading Private Limited Company ....</p>
-                    <br/>
-                    <div style={{fontSize: "medium"}} className="row" >
-                      <div className="fa fa-location-arrow " style={{marginRight: 15}}> Addis Ababa, ET</div> <div className="fa fa-phone" style={{marginRight: 15}}>0925001221</div> <a href="#" className="fa fa-globe">Vist website</a>
-                    </div> 
-                  
-                  
-                  </div>
-                  <br/>
-                  
-                  </div>
-                </div>
-  
-                <div className="d-block d-md-flex listing vertical">
-                  <div style={{borderColor: "29, 28, 28", borderRadius:5, backgroundColor: "white"}} >
-            
-                    <img src="images/72.jpg" className="img-thumbnail rounded-circle" style={{ marginLeft: 60, width: 120, height: 120}}/>
-                    
-                  
-                  
-                  <div className="text p-4" >
-                    <h3 className="h5 text-black" style={{fontWeight: "bold"}}><a href="listings-single.html">DES General Trading PLC</a></h3>
-                    <span style={{fontWeight: "bolder, fontSize: small"}} className="category ">Listed in <a href="#"> Agriculture</a></span>
-                    <br/>
-                    <p className="mb-0" style={{fontSize: "small, fontFamily: Arial, Helvetica, sansSerif"}} >DES General Trading Private Limited Company ....</p>
-                    <br/>
-                    <div style={{fontSize: "medium"}}  className="row" >
-                      <div className="fa fa-location-arrow " style={{marginRight: 15}}> Addis Ababa, ET</div> <div className="fa fa-phone" style={{marginRight: 15}}>0925001221</div> <a href="#" className="fa fa-globe">Vist website</a>
-                    </div> 
-                  
-                  
-                  </div>
-                  <br/>
-                  
-                  </div>
-                </div>
-  
-                <div className="d-block d-md-flex listing vertical">
-                  <div style={{borderColor: "29, 28, 28", borderRadius:5, backgroundColor: "white"}} >
-            
-                    <img src="images/72.jpg" className="img-thumbnail rounded-circle" style={{ marginLeft: 60, width: 120, height: 120}}/>
-                    
-                  
-                  
-                  <div className="text p-4" >
-                    <h3 className="h5 text-black" style={{fontWeight: "bold"}}><a href="listings-single.html">DES General Trading PLC</a></h3>
-                    <span style={{fontWeight: "bolder", fontSize: "small"}} className="category ">Listed in <a href="#"> Agriculture</a></span>
-                    <br/>
-                    <p className="mb-0" style={{fontSize: "small, fontFamily: Arial, Helvetica, sansSerif"}} >DES General Trading Private Limited Company ....</p>
-                    <br/>
-                    <div style={{fontSize: "medium"}} className="row" >
-                      <div className="fa fa-location-arrow "style={{marginRight: 15}}> Addis Ababa, ET</div> <div className="fa fa-phone" style={{marginRight: 15}}>0925001221</div> <a href="#" className="fa fa-globe">Vist website</a>
-                    </div> 
-                  
-                  
-                  </div>
-                  <br/>
-                  
-                  </div>
-                </div>
-  
-                <div className="d-block d-md-flex listing vertical">
-                  <div style={{borderColor: "29, 28, 28", borderRadius:5, backgroundColor: "white"}} >
-            
-                    <img src="images/72.jpg" className="img-thumbnail rounded-circle" style={{marginLeft: 60, width: 120, height: 120  }}/>
-                    
-                  
-                  
-                  <div className="text p-4" >
-                    <h3 className="h5 text-black" style={{fontWeight: "bold"}}><a href="listings-single.html">DES General Trading PLC</a></h3>
-                    <span style={{fontWeight: "bolder", fontSize: "small"}} className="category ">Listed in <a href="#"> Agriculture</a></span>
-                    <br/>
-                    <p className="mb-0" style={{fontSize: "small", fontFamily: "Arial, Helvetica, sansSerif"}} >DES General Trading Private Limited Company ....</p>
-                    <br/>
-                    <div style={{fontSize: "medium"}}  className="row" >
-                      <div className="fa fa-location-arrow "style={{marginRight: 15}}> Addis Ababa, ET</div> <div className="fa fa-phone" style={{marginRight: 15}}>0925001221</div> <a href="#" className="fa fa-globe">Vist website</a>
-                    </div> 
-                  
-                  
-                  </div>
-                  <br/>
-                  
-                  </div>
-                </div>
-  
-              
-                
-            </div>
-  
-  
-          </div>
-        </div>
-      </div>
+     
   
       </div>
       
