@@ -26,8 +26,10 @@ export const editComment = (commentId, comment) => API.patch(`/comment/${comment
 export const rate = (listingId, rating) => API.patch(`/posts/rate/${listingId}`,rating);
 // ////
 
-
 export const getUsers = () => API.get('/admin/users');
+export const deleteUsers = (id) => API.delete(`/admin/users/${id}`);
+// 
+export const getCategories = () => API.get('/admin/category');
 // 
 export const signIn = (formData)=>{ 
        console.log(formData) 

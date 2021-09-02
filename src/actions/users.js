@@ -1,5 +1,5 @@
 import * as api from '../api/index.js';
-import { GET_USERS} from '../constants/actionTypes.js';
+import { DELETE_USERS, GET_USERS} from '../constants/actionTypes.js';
 
 
 export const getUsers = () => async (dispatch) => {
@@ -7,6 +7,16 @@ export const getUsers = () => async (dispatch) => {
         const {data} = await  api.getUsers();
         // console.log(data);
         dispatch({type: GET_USERS, payload: data})
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const deleteUsers = (id) => async(dispatch) => {
+    try {
+        console.log(`id form action ${id}`);
+        await api.deleteUsers(id);
+        dispatch({type: DELETE_USERS, payload: id});
     } catch (error) {
         console.error(error);
     }

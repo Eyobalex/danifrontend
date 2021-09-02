@@ -9,8 +9,8 @@ import useStyles from './styles';
 import { Comment } from './Comment/Comment';
 import { PostComment } from './Comment/PostComment';
 import Navbar from '../Navbar/Navbar';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.min.js';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/js/bootstrap.min.js';
 const ListingSingle = () => {
   const { post, posts, isLoading, comments} = useSelector((state) =>{
     console.log(state);
