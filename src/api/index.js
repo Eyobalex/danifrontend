@@ -30,6 +30,7 @@ export const getUsers = () => API.get('/admin/users');
 export const deleteUsers = (id) => API.delete(`/admin/users/${id}`);
 // 
 export const getCategories = () => API.get('/admin/category');
+export const deleteCategories = (id) => API.delete(`/admin/category/${id}`);
 // 
 export const signIn = (formData)=>{ 
        console.log(formData) 

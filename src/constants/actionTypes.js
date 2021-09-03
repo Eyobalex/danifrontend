@@ -22,3 +22,4 @@ export const DELETE_USERS = 'DELETE_USERS';
 
 
 export const GET_CATEGORIES = 'GET_CATEGORIES'; 
+export const DELETE_CATAGORIES = 'DELETE_CATAGORIES'; 
