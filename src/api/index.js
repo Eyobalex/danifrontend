@@ -28,6 +28,7 @@ export const rate = (listingId, rating) => API.patch(`/posts/rate/${listingId}`,
 
 export const getUsers = () => API.get('/admin/users');
 export const deleteUsers = (id) => API.delete(`/admin/users/${id}`);
+export const editUsers = (id, user) => API.patch(`/admin/users/${id}`,user);
 // 
 export const getCategories = () => API.get('/admin/category');
 export const deleteCategories = (id) => API.delete(`/admin/category/${id}`);

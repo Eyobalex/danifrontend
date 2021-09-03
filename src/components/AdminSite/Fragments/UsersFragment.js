@@ -30,10 +30,10 @@ const Users = () => {
         dispatch(deleteUsers(id));
     }
     const handleEdit = (e, user) => { 
-        console.log(user);
-        setCurrentUser({name: user.name, email: user.email, role:user.role, verified: user.verified});
-        console.log("cu", currentUser);
-        // setFormData({name: currentUser.name, email:currentUser.email, role: currentUser.role, verified: currentUser.verified});
+        // console.log(user);
+        setCurrentUser(user);
+        // console.log("cu", currentUser);
+        setFormData({name: user.name, email: user.email, role:user.role, verified: user.verified })
         setOpen(true);
       }
       
@@ -54,7 +54,7 @@ const Users = () => {
             aria-labelledby="form-dialog-title"
           >
             
-            <DialogTitle id="form-dialog-title"> Edit</DialogTitle>
+            <DialogTitle id="form-dialog-title"> Edit { (currentUser) && currentUser.name }</DialogTitle>
             <DialogContent>
               <DialogContentText>
                 To add a new category provied the name of the category and the
