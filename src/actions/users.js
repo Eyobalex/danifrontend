@@ -19,3 +19,7 @@ export const deleteUsers = (id) => async(dispatch) => {
         console.error(error);
     }
 }
+
+
+export const createUsers = user => async(dispatch) => {}
+export const editUsers = (id, user) => async(dispatch) => {}

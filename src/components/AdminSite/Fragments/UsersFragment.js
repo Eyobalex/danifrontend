@@ -1,4 +1,4 @@
-import { Button, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, TextField, Typography } from '@material-ui/core';
+import { Button, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControl, FormControlLabel, FormLabel, InputLabel, Radio, RadioGroup, Select, TextField, Typography } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import useStyles from './styles';
 
@@ -10,72 +10,127 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { useDispatch, useSelector } from 'react-redux';
-import {getUsers, deleteUsers} from '../../../actions/users';
+import {getUsers, deleteUsers , createUsers, editUsers} from '../../../actions/users';
 
-const ifd = {name: '', email: '', role:'', verified: '' };
+
 const Users = () => {
-
+    const init = {name: '', email: '', role:'', verified: false };
     const classes = useStyles();
     const dispatch = useDispatch();
+    const {users} =  useSelector( state => state.users )
     useEffect(() => {
         dispatch(getUsers());
     }, [dispatch])
 
-    const [formData, setFormData] = useState(ifd);
+    const [formData, setFormData] = useState(init);
     const [currentUser, setCurrentUser] = useState(null);
+    const [open, setOpen] = useState(false);
 
-
-    useEffect(()=> {
-        setFormData(currentUser);
-    }, [currentUser])
-
-    const handleForm = e => {
-        e.preventDefault();
-
-        console.log("form: ",formData);
-    }
-
-
-    const form = () => {
-        if(currentUser){
-            return (
-                <Container maxWidth="md" fixed >
-                    <Paper className={classes.paper} >
-                        <form autoComplete="off" noValidate   onSubmit={handleForm}>
-                            <Typography variant="h6">
-                                 {`Edit ${currentUser.name}`}
-                            <Typography align="right" onClick={()=>setCurrentUser(null)}>X</Typography>
-                            </Typography>
-                            <TextField name="name" variant="outlined" label="Name" fullWidth value={currentUser.name} onChange={(e)=> setFormData({...formData,name: e.target.value })}  />
-                            <TextField name="email" variant="outlined" label="Email" fullWidth value={currentUser.email} onChange={(e)=> setFormData({...formData,email: e.target.value })} />
-                            <TextField name="role" variant="outlined" label="Role" fullWidth value={currentUser.role} onChange={(e)=> setFormData({...formData,role: e.target.value })} />
-                            <TextField name="verified" variant="outlined" label="Verified" fullWidth value={currentUser.verified} onChange={(e)=> setFormData({...formData,verified: e.target.value })} />
-                            
-                            <Button  variant="contained" color="primary" size="large" type="submit"  fullWidth>Submit</Button>
-                            <Button variant="contained" color="secondary" size="small"  fullWidth>Clear</Button>
-                        </form>
-                    </Paper>
-    
-                </Container>
-            )
-        }else{
-            return <></>
-        }
-       
-    }
- 
-    const {users} =  useSelector( state => state.users )
     const handleDelete = (e, id)=> {
         dispatch(deleteUsers(id));
     }
+    const handleEdit = (e, user) => { 
+        console.log(user);
+        setCurrentUser({name: user.name, email: user.email, role:user.role, verified: user.verified});
+        console.log("cu", currentUser);
+        // setFormData({name: currentUser.name, email:currentUser.email, role: currentUser.role, verified: currentUser.verified});
+        setOpen(true);
+      }
+      
+      const handleSubmit = (e) => {
+        dispatch(editUsers(currentUser._id, formData))
+        
+        setOpen(false);
+      }
     return (
 
 
         <div>
             <Container maxWidth="md" fixed>
                   Users Fragment
+                  <Dialog
+            open={open}
+            onClose={(e) => setOpen(false)}
+            aria-labelledby="form-dialog-title"
+          >
+            
+            <DialogTitle id="form-dialog-title"> Edit</DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                To add a new category provied the name of the category and the
+                font awesome class associated with it.
+              </DialogContentText>
+              
 
-                  {/* <Typography align="right" onClick={handleOpen}>new</Typography> */}
+              <TextField
+                autoFocus
+                margin="dense"
+                id="name"
+                name="name"
+                label="Name"
+                value={formData.name || ""}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+                type="text"
+                fullWidth
+              />
+              <TextField
+                //   autoFocus
+                margin="dense"
+                id="faclass"
+                type="email"
+                value={formData.email || ""}
+                name="email"
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+                label="Font Awesome class"
+                fullWidth
+              />
+              <FormControl className={classes.formControl} fullWidth>
+                <InputLabel htmlFor="age-native-simple">Verified</InputLabel>
+                <Select
+                native
+                
+                value={formData.verified || false}
+                onChange={()=> {}}
+                inputProps={{
+                    name: 'verified',
+                    id: 'verified',
+                }}
+                >
+                <option value={false}>Unverified</option>
+                <option value={true}>Verified</option>
+                </Select>
+            </FormControl>
+              <FormControl className={classes.formControl} fullWidth>
+                <InputLabel htmlFor="age-native-simple">Role</InputLabel>
+                <Select
+                native
+                value={formData.role || "CLIENT"}
+                onChange={()=> {}}
+                inputProps={{
+                    name: 'role',
+                    id: 'role',
+                }}
+                >
+                <option value="CLIENT">Client</option>
+                <option value="ADMIN">Admin</option>
+                </Select>
+            </FormControl>
+
+
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={(e) => setOpen(false)} color="primary">
+                Cancel
+              </Button>
+              <Button onClick={handleSubmit} color="primary">
+                submit
+              </Button>
+            </DialogActions>
+          </Dialog>
 
                   <TableContainer component={Paper} >
                     <Table  aria-label="simple table">
@@ -97,7 +152,7 @@ const Users = () => {
                             <TableCell align="right">{user?.email}</TableCell>
                             <TableCell align="right">{user?.role}</TableCell>
                             <TableCell align="right">{user?.verified?.toString()}</TableCell>
-                            <TableCell align="right"><Button onClick={(e) =>handleDelete(e, user._id)} color="primary" >delete</Button>| <Button onClick={(e) =>setCurrentUser(user)} color="primary" >edit</Button></TableCell>
+                            <TableCell align="right"><Button onClick={(e) =>handleDelete(e, user._id)} color="primary" >delete</Button>| <Button onClick={(e) =>handleEdit(e, user)} color="primary" >edit</Button></TableCell>
                             </TableRow>
                         ))}
                         </TableBody>
@@ -105,8 +160,6 @@ const Users = () => {
                 </TableContainer>
             </Container>
 
-            {form()}
-                
             
             
            
@@ -118,76 +171,3 @@ const Users = () => {
 }
 
 export default Users;
-
-
-
-
-// import React from 'react';
-// import Button from '@material-ui/core/Button';
-// import TextField from '@material-ui/core/TextField';
-// import Dialog from '@material-ui/core/Dialog';
-// import DialogActions from '@material-ui/core/DialogActions';
-// import DialogContent from '@material-ui/core/DialogContent';
-// import DialogContentText from '@material-ui/core/DialogContentText';
-// import DialogTitle from '@material-ui/core/DialogTitle';
-
-// export default function FormDialog() {
-//   const [open, setOpen] = React.useState(false);
-
-//   const handleClickOpen = () => {
-//     setOpen(true);
-//   };
-
-//   const handleClose = () => {
-//     setOpen(false);
-//   };
-
-//   return (
-//    <></>
-//   );
-// }
-
-
-// const cateForm = ({handleClose, handleClickOpen, }) => {
-//     return (
-//         <div>
-//         <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-//           Open form dialog
-//         </Button>
-//         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-//           <DialogTitle id="form-dialog-title">Add New Category</DialogTitle>
-//           <DialogContent>
-//             <DialogContentText>
-//               To add  a new category provied the name of the category and the font awesome class associated with it.
-//             </DialogContentText>
-//             <TextField
-//               autoFocus
-//               margin="dense"
-//               id="name"
-//               name="name"
-//               label="Name"
-//               type="text"
-//               fullWidth
-//             />
-//             <TextField
-//               autoFocus
-//               margin="dense"
-//               id="name"
-//               name="faicon"
-//               label="Font Awesome class"
-//               type="text"
-//               fullWidth
-//             />
-//           </DialogContent>
-//           <DialogActions>
-//             <Button onClick={handleClose} color="primary">
-//               Cancel
-//             </Button>
-//             <Button onClick={handleClose} color="primary">
-//               submit
-//             </Button>
-//           </DialogActions>
-//         </Dialog>
-//       </div>
-//     )
-// }

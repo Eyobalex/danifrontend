@@ -31,6 +31,8 @@ export const deleteUsers = (id) => API.delete(`/admin/users/${id}`);
 // 
 export const getCategories = () => API.get('/admin/category');
 export const deleteCategories = (id) => API.delete(`/admin/category/${id}`);
+export const createCategory = (category) => API.post('/admin/category', category);
+export const editCategory = (id, category) => API.patch(`/admin/category/${id}`, category);
 // 
 export const signIn = (formData)=>{ 
        console.log(formData) 
