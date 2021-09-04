@@ -11,7 +11,9 @@ import { PostComment } from './Comment/PostComment';
 import Navbar from '../Navbar/Navbar';
 import Category from '../Home/Category';
 import { getCategories } from '../../actions/category';
+import image1 from "../../images/hero_1.jpg";
 // import 'bootstrap/dist/css/bootstrap.min.css';
+import { Carousel } from 'react-bootstrap';
 // import 'bootstrap/dist/js/bootstrap.min.js';
 const ListingSingle = () => {
   const { post, posts, isLoading, comments} = useSelector((state) =>{
@@ -174,7 +176,7 @@ const ListingSingle = () => {
                   <div className="modal-content">
                   <div className="modal-header">
                   <h3>Insert Review</h3>
-                  <button type="button" className="close" data-dismiss="modal"> &times;</button>
+        
                   </div>
                    
                   <div className="modal-body">
@@ -211,41 +213,32 @@ const ListingSingle = () => {
               </div>
             </div>
             <h4 style={{textAlign: "center"}} >DES Products</h4>
-                  
-                  <div  className="row">
-                  <div className="container p-5">
-          <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
-            <div className="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <div  className="carousel-inner">
-              <div   className="carousel-item active">
-                <img style={{height:400,width:650}} src={post.logo} className="d-block w-100" alt="..." />
-              
-              </div>
-              <div   className="carousel-item">
-              <img style={{height:400,width:650}} src={post.logo} className="d-block w-100" alt="..." />
-              
-              </div>
-              <div className="carousel-item">
-                <img src="https://therichpost.com/wp-content/uploads/2021/05/Slider-Third-Carousel.png" className="d-block w-100" alt="..." />
-              
-              </div>
-            </div>
-            <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span className="visually-hidden">Previous</span>
-            </button>
-            <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-              <span className="carousel-control-next-icon" aria-hidden="true"></span>
-              <span className="visually-hidden">Next</span>
-            </button>
-          </div>
-          </div>
-                      
-                  </div>
+            <Carousel fade={true} pause={false}>
+      <Carousel.Item interval={2000}>
+        <img
+          className="d-block w-100"
+          src={image1}
+          alt="First slide"
+        />
+     
+      </Carousel.Item>
+      <Carousel.Item interval={2000}>
+        <img
+          className="d-block w-100"
+          src={image1}
+          alt="Third slide"
+        />
+      
+      </Carousel.Item>
+      <Carousel.Item interval={2000}>
+        <img
+          className="d-block w-100"
+          src={image1}
+          alt="Third slide"
+        />
+  
+      </Carousel.Item>
+    </Carousel>
                   
             {post.comments.map( comment => {
               console.log(comment);
