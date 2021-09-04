@@ -94,7 +94,7 @@ const Users = () => {
                 native
                 
                 value={formData.verified || false}
-                onChange={()=> {}}
+                onChange={(e)=> {setFormData({...formData, verified: e.target.value})}}
                 inputProps={{
                     name: 'verified',
                     id: 'verified',
@@ -109,7 +109,7 @@ const Users = () => {
                 <Select
                 native
                 value={formData.role || "CLIENT"}
-                onChange={()=> {}}
+                onChange={(e)=> {setFormData({...formData, role: e.target.value})}}
                 inputProps={{
                     name: 'role',
                     id: 'role',

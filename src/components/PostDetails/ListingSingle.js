@@ -9,6 +9,8 @@ import useStyles from './styles';
 import { Comment } from './Comment/Comment';
 import { PostComment } from './Comment/PostComment';
 import Navbar from '../Navbar/Navbar';
+import Category from '../Home/Category';
+import { getCategories } from '../../actions/category';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import 'bootstrap/dist/js/bootstrap.min.js';
 const ListingSingle = () => {
@@ -20,6 +22,13 @@ const ListingSingle = () => {
   const history = useHistory();
   const classes = useStyles();
   const { id } = useParams();
+
+  
+  useEffect(() => {
+    dispatch(getCategories());
+  },[dispatch])
+  const { categories} = useSelector((state) => state.category);
+
 
   useEffect(() => {
     dispatch(getPost(id));
@@ -258,62 +267,7 @@ const ListingSingle = () => {
               <h2 style={{fontWeight: "bolder", textAlign: "center"}}>Directories</h2>
             
           
-         
-              <nav id="sidebar">
-          
-            <ul className="nav nav-pills  nav-sidefeatures">
-              <div className="col-lg-41">
-            <li>
-              <a  href="catlists.html"><span className="fa fa-fire" ></span> Agriculture</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-picture-o" ></span> Amusement Parks</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-bars"></span> Appartments</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-cut" ></span> Architecture</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-money" ></span>Banking and Finance</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-music" ></span> Bars</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-book" ></span> Books & Mags</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-glass" ></span>Clubs</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-road" ></span> Commercial Places</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-desktop"></span> Computer and Internet</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-exclamation-triangle" ></span> Construction</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-book" ></span> Education</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-music" ></span>  Entertaiment</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-camera" ></span> Fashion</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-plus-square" ></span> Health & Medical</a>
-            </li>
-            
-          </div>
-          </ul>
-          
-              </nav>
-            
+         <Category categories={categories} />
             </div>
           
     

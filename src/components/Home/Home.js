@@ -3,7 +3,7 @@ import {Link, Route, useHistory, useLocation} from "react-router-dom"
 
 
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import decode from 'jwt-decode';
 
 import * as actionType from '../../constants/actionTypes';
@@ -13,11 +13,13 @@ import { Container, Grow, Grid, AppBar, TextField, Button, Paper } from '@materi
 
 import useStyles from './styles';
 
+import {getCategories} from '../../actions/category';
 
 import { getPostsBySearch } from '../../actions/posts';
 
 import Pagination from '../Pagination';
 import Navbar from "../Navbar/Navbar";
+import Category from "./Category";
 
 
 /*className Home extends Component {
@@ -59,6 +61,11 @@ import Navbar from "../Navbar/Navbar";
       history.push('/');
     }
   };
+
+  useEffect(() => {
+    dispatch(getCategories());
+  },[dispatch])
+  const { categories} = useSelector((state) => state.category);
 
   const logout = () => {
     dispatch({ type: actionType.LOGOUT });
@@ -163,66 +170,8 @@ import Navbar from "../Navbar/Navbar";
         
             <h2 style={{fontWeight:"bolder"}} >Directories</h2>
           
-        
-       
-            <nav id="sidebar">
-        
-          <ul className="nav nav-pills  nav-sidefeatures">
-            <div className="col-lg-41">
-
-            <li>
-              <a  href="catlists.html"><span className="fa fa-fire" ></span> Agriculture</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-picture-o" ></span> Amusement Parks</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-bars"></span> Appartments</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-cut" ></span> Architecture</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-money" ></span>Banking and Finance</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-music" ></span> Bars</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-book" ></span> Books & Mags</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-glass" ></span>Clubs</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-road" ></span> Commercial Places</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-desktop"></span> Computer and Internet</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-exclamation-triangle" ></span> Construction</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-book" ></span> Education</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-music" ></span>  Entertaiment</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-camera" ></span> Fashion</a>
-            </li>
-            <li>
-              <a href="#"><span className="fa fa-plus-square" ></span> Health & Medical</a>
-            </li>
-            
+          <Category categories={categories} />
          
-        </div>
-        </ul>
-        
-            </nav>
-          
-          
         
     </div>
     </div>
