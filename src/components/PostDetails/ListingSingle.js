@@ -207,7 +207,16 @@ const ListingSingle = () => {
               <div className="row">
               
                 <div className="col-lg-12">
-                <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5089.027915764806!2d38.75787871067382!3d8.983121094747325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b84402c5b6d99%3A0x1ff628bbdc473237!2zR290ZXJhIFNxdWFyZSDhjI7hibDhiKsg4Yib4Yiz4YiI4Yyr!5e0!3m2!1sen!2set!4v1625149301212!5m2!1sen!2set" width="100" height="300" style={{border:0}} ></iframe></p>
+                <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2473.8125647286365!2d38.813686603437226!3d9.01936035739818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b8551e70d4e55%3A0x261206bdb30d4986!2sCentury%20Mall!5e0!3m2!1sen!2set!4v1630778040924!5m2!1sen!2set"
+              width="600"
+              height="450"
+              frameBorder="0"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              aria-hidden="false"
+              tabIndex="0"
+            />
               </div>
             
               </div>
