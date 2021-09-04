@@ -212,7 +212,7 @@ const ListingSingle = () => {
             
               </div>
             </div>
-            <h4 style={{textAlign: "center"}} >DES Products</h4>
+            <h4 style={{textAlign: "center"}} >  Products</h4>
             <Carousel fade={true} pause={false}>
       <Carousel.Item interval={2000}>
         <img
@@ -239,7 +239,13 @@ const ListingSingle = () => {
   
       </Carousel.Item>
     </Carousel>
-                  
+    <div style={{marginTop:10}} className="d-block d-md-flex listing vertical">
+      <div style={{marginLeft:15}}>
+    <h4 style={{textAlign: "center"}} > Services</h4>
+                  <h6>car importer and export</h6>
+                  <h6>car interrior part</h6>
+                  </div>
+       </div>        
             {post.comments.map( comment => {
               console.log(comment);
               return (
