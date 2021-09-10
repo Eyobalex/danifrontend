@@ -15,7 +15,12 @@ import CategoryFragment from '../Fragments/CategoryFragment'
 import {Category, Group, Home, PowerOff, Receipt} from '@material-ui/icons';
 import ListingFragment from '../Fragments/ListingFragment'
 import UsersFragment from '../Fragments/UsersFragment'
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
+
+import * as actionType from '../../../constants/actionTypes';
 const drawerWidth = 240;
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,6 +68,20 @@ export default function ClippedDrawer() {
 
 
   }
+  
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const dispatch = useDispatch();
+
+  const history = useHistory();
+
+  const logout = () => {
+    dispatch({ type: actionType.LOGOUT });
+
+    history.push('/auth');
+
+    setUser(null);
+  };
+
 
   return (
     <div className={classes.root}>
@@ -115,7 +134,7 @@ export default function ClippedDrawer() {
                 <ListItemIcon>
                     <PowerOff/>  
              </ListItemIcon>
-                <ListItemText primary="Logout" />
+                <ListItemText primary="Logout" onClick={logout} />
               </ListItem>
           </List>
           <Divider />

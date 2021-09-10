@@ -5,11 +5,8 @@ import listingSingle from './components/PostDetails/ListingSingle';
 import Auth from './components/Auth/Auth'
 import Admin from './components/Form/Admin'
 
-
-import Navbar from './components/Navbar/Navbar';
-import Index from './components/Admin/Index';
-import User from './components/Admin/Users/User';
-import Dashboard from './components/AdminSite/AdminDashboard/Dashboard'
+import Dashboard from './components/AdminSite/AdminDashboard/Dashboard';
+import ClientDashbord from './components/Client/ClientDashbord/ClientDashboard';
 
 import {useSelector, useDispatch} from 'react-redux';
 
@@ -35,7 +32,8 @@ const App = () => {
         <Route exact path="/Admin" component={Admin}/>
        
         <Route path="/adminDashboard" component={Dashboard}/>
-        <Route exact path="/Admins" component={Index}/>
+        <Route path="/clientDashboard" component={ClientDashbord}/>
+        {/* <Route exact path="/Admins" component={Index}/> */}
         {/* <Route exact path="/Admins/users" component={() => <User users={users} />}/> */}
 
       

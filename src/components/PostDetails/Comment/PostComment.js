@@ -5,20 +5,25 @@ import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import { createComment } from "../../../actions/comment";
 
 import ReactStars from "react-rating-stars-component";
+import { rate } from "../../../actions/posts";
 
 
 export const PostComment = ({postId})=> {
     const ratingChanged = (newRating) => {
-        console.log(newRating);
+        setPostData({...postData, rating: +newRating});
       };
 
-    const [postData, setPostData] = useState({name: '', comment: '', email: ''});
+    const [postData, setPostData] = useState({name: '', comment: '', email: '', rating: 0});
     const dispatch = useDispatch();
     const classes = useStyles();
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(createComment( postId,postData));
+        if(postData.rating > 0) {
+            dispatch(rate( postId, postData.rating ));
+        }
         // alert(postId);
+        console.log(postData);
     }
     const clear = (e) => {
         setPostData({name: '', comment: '', email: ''})
@@ -35,7 +40,6 @@ export const PostComment = ({postId})=> {
                 <div style={{display:'inline'}}>
                 <ReactStars
                     count={5}
-                   
                     onChange={ratingChanged}
                     size={45}
                     activeColor="#ffd700"

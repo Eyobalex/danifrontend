@@ -18,12 +18,15 @@ export const likePost = (id) => API.patch(`/posts/${id}/likePost`);
 export const updatePost = (id, updatedPost) => API.patch(`/posts/${id}`, updatedPost);
 export const deletePost = (id) => API.delete(`/posts/${id}`);
 
+export const getListings = () =>API.get('/admin/posts');
+
 
 //
 export const createComment = (postId, comment) =>  API.post(`/comment/${postId}`, comment);
 export const deleteComment = ( commentId, postId) => API.delete(`comment/${commentId}/${postId}`);
 export const editComment = (commentId, comment) => API.patch(`/comment/${commentId}`, comment);
-export const rate = (listingId, rating) => API.patch(`/posts/rate/${listingId}`,rating);
+export const rate = (listingId, rating) =>API.patch(`/posts/rate/${listingId}`,{"rating" : rating});
+  
 // ////
 
 export const getUsers = () => API.get('/admin/users');
@@ -34,6 +37,12 @@ export const getCategories = () => API.get('/admin/category');
 export const deleteCategories = (id) => API.delete(`/admin/category/${id}`);
 export const createCategory = (category) => API.post('/admin/category', category);
 export const editCategory = (id, category) => API.patch(`/admin/category/${id}`, category);
+// 
+
+export const getOwnPosts = (ownerId) => API.get(`/posts/m/${ownerId}`)
+export const uploadProductImage = (id, productImage) => API.patch( `/posts/productImage/${id}`,productImage, {headers: {
+  'content-type': 'multipart/form-data'
+}});
 // 
 export const signIn = (formData)=>{ 
        console.log(formData) 

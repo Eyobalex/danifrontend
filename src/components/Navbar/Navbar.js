@@ -16,7 +16,8 @@ const Navbar = () => {
   let HomeURL='/posts';
   let UploadURL='/admin';
   let AutURL='/auth';
-  let AdminURL='/adminDashboard'
+  let AdminURL='/adminDashboard';
+  let ClientURL= '/clientDashboard';
 
   const logout = () => {
     dispatch({ type: actionType.LOGOUT });
@@ -76,6 +77,7 @@ const Navbar = () => {
           <li  >
 
            <a href={AdminURL}> AdminManage</a>
+           <a href={ClientURL}> Client</a>
            <a href={UploadURL} className="text-white mb-0">
              Manage Listing
           </a>

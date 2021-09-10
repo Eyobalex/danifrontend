@@ -31,7 +31,6 @@ const ListingSingle = () => {
   },[dispatch])
   const { categories} = useSelector((state) => state.category);
 
-
   useEffect(() => {
     dispatch(getPost(id));
   }, [id]);
@@ -150,13 +149,13 @@ const ListingSingle = () => {
                   <h3  style={{paddingTop: 25 }}><a href="listings-single.html">DES General Trading PLC</a></h3>
                   
                   <p style={{paddingBottom: 5}} className="mb-0">
-                    <span className="icon-star text-warning"></span>
-                    <span className="icon-star text-warning"></span>
-                    <span className="icon-star text-warning"></span>
-                    <span className="icon-star text-warning"></span>
-                    <span className="icon-star text-warning"></span>
+                    <span className={(post.averageRating > 0) ? "icon-star text-warning" : "icon-star text-silver"}></span>
+                    <span className={(post.averageRating > 1) ? "icon-star text-warning" : "icon-star text-silver"}></span>
+                    <span className={(post.averageRating > 2) ? "icon-star text-warning" : "icon-star text-silver"}></span>
+                    <span className={(post.averageRating > 3) ? "icon-star text-warning" : "icon-star text-silver"}></span>
+                    <span className={(post.averageRating > 4) ? "icon-star text-warning" : "icon-star text-silver"}></span>
                     
-                    <span className="review">(3 Reviews)</span>
+                    <span className="review">({post.averageRating} )({post.ratingCount} Reviews)</span>
                   </p>
                   
                      <ul className="topside">

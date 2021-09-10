@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React from 'react';
 
 
@@ -29,7 +30,8 @@ export const Comment = ({comment}) => {
                   <span className="icon-star text-warning"></span>
                   <span className="icon-star text-warning"></span>
                   
-                  <span className="review">{comment?.createdAt}</span>
+                  {/* <span className="review">{moment(new Date(comment?.createdAt).toISOString()).fromNow()}</span> */}
+                  <span className="review">{comment?.createdA}</span>
                 </p>
                             
                   <p>{comment.comment}</p>
