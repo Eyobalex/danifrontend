@@ -111,10 +111,7 @@ export const rate = (listingId, rating) => async (dispatch) => {
 
 export const getOwnPosts = () => async (dispatch) => {
   try {
-    const user = JSON.parse(localStorage.getItem("profile"));
-    console.log("here again...", user.result._id);
-    console.log(user);
-    const { data } = await api.getOwnPosts(user.result._id);
+    const { data } = await api.getOwnPosts();
     dispatch({ type: GET_OWN_POSTS, payload: data });
   } catch (error) {
     console.log(error);

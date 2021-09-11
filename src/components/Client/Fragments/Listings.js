@@ -55,7 +55,10 @@ export default function Listings() {
         // console.log("here");
     }, [dispatch])
 
-    const posts = useSelector( state => state.posts.posts);
+    const posts = useSelector( state =>{
+      console.log("client",state.posts.posts);
+      return state.posts.posts
+    });
     const categories = useSelector( state =>  state.category.categories);
 
     return (
@@ -207,6 +210,7 @@ export default function Listings() {
                             <TableCell align="right">Logo</TableCell>
                             <TableCell align="right">Location</TableCell>
                             <TableCell align="right">Description</TableCell>
+                            <TableCell align="right">image</TableCell>
                             <TableCell align="right">Map</TableCell>
                             <TableCell align="right">phoneNumber</TableCell>
                             <TableCell align="right">category</TableCell>
@@ -224,6 +228,9 @@ export default function Listings() {
                             <TableCell align="right">{post?.logo}</TableCell>
                             <TableCell align="right">{post?.location}</TableCell>
                             <TableCell align="right">{post?.description}</TableCell>
+                            <TableCell align="right"><ul>{post?.productImages?.map( img =>{
+                                return <li> <img src={`http://localhost:5000/images/${img?.filename}`} alt="" height={50} width={50}/></li>
+                              })}</ul></TableCell>
                             <TableCell align="right">{post?.map}</TableCell>
                             <TableCell align="right">{post?.phoneNumber}</TableCell>
                             <TableCell align="right">{post?.category}</TableCell>
