@@ -28,8 +28,9 @@ export default function Listings() {
         map: "",
         phoneNumber: "",
         category: null,
-    })
+      });
       setOpen(false);
+      setOpenImageForm(false);
     }
     const createPosts = () => {};
     const classes = useStyles();
@@ -46,7 +47,10 @@ export default function Listings() {
     const handleUploadProductImage = (e) => {
         const formData = new FormData();
         formData.append('productImage', productImage);
+
+        console.log(currentListing._id);
         dispatch(uploadProductImage(currentListing._id, formData));
+        // setOpenImageForm(false);
         clear()
     }
     useEffect(() => {
@@ -222,7 +226,7 @@ export default function Listings() {
                         {posts?.map((post) => (
                             <TableRow key={post._id}>
                             <TableCell component="th" scope="row">
-                                {post?.productImage}
+                                {/* {post?.productImage} */}
                             </TableCell>
                             <TableCell align="right">{post?.creator}</TableCell>
                             <TableCell align="right">{post?.logo}</TableCell>
@@ -247,6 +251,7 @@ export default function Listings() {
                                 |<Button onClick={(e) =>{
                                     setOpenImageForm(true);
                                     setCurrentListing(post);
+                                    console.log(post);
                                 } } color="primary" >Add product image</Button>
                             </TableCell>
                             </TableRow>
