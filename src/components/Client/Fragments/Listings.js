@@ -50,8 +50,8 @@ export default function Listings() {
 
         console.log(currentListing._id);
         dispatch(uploadProductImage(currentListing._id, formData));
-        // setOpenImageForm(false);
-        clear()
+        setOpenImageForm(false);
+        //clear()
     }
     useEffect(() => {
         dispatch(getOwnPosts());
