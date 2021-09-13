@@ -229,7 +229,7 @@ export default function Listings() {
                             <TableCell align="right">{post?.location}</TableCell>
                             <TableCell align="right">{post?.description}</TableCell>
                             <TableCell align="right"><ul>{post?.productImages?.map( img =>{
-                                return <li> <img src={`http://localhost:5000/images/${img?.filename}`} alt="" height={50} width={50}/></li>
+                                return <li> <img src={`http://localhost:5000/images/${img?.filename}`} alt="" height={50} width={50}/> <span>Delete</span></li>
                               })}</ul></TableCell>
                             <TableCell align="right">{post?.map}</TableCell>
                             <TableCell align="right">{post?.phoneNumber}</TableCell>
