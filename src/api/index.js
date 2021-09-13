@@ -39,7 +39,7 @@ export const createCategory = (category) => API.post('/admin/category', category
 export const editCategory = (id, category) => API.patch(`/admin/category/${id}`, category);
 // 
 
-export const getOwnPosts = () => API.get(`/posts/own`)
+export const getOwnPosts = () => API.get(`/posts/own`);
 export const uploadProductImage = (id, productImage) => API.patch( `/posts/productImage/${id}`,productImage, {headers: {
   'content-type': 'multipart/form-data'
 }});
