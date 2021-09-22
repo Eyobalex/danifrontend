@@ -158,11 +158,11 @@ const ListingSingle = () => {
                     
                     <span className="review">({post.averageRating} )({post.ratingCount} Reviews)</span>
                   </p>
-                  {(user & user.role == "CLIENT") && (
+                  {/* {(user & user.role == "CLIENT") && ( */}
                     <ul className="topside">
                     <li>  <a href="#" data-target="#mymodel" data-toggle="modal"><span className="fa fa-comments" ></span>Leave a review</a></li> 
                 </ul>
-                  )}
+                  {/* )} */}
                      
    
                  

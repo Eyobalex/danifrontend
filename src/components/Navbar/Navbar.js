@@ -76,16 +76,11 @@ const Navbar = () => {
         {user?.result ? (
           
           <li  >
-            {/* {(user?.result.role == 'ADMIN') && (
-              <a href={AdminURL}> AdminManage</a>
+           
+            {(JSON.parse(localStorage.getItem('profile')).result.role == 'BUSINESS') && (
+              <a href={ClientURL}> Manage Business</a>
             )}
-            {(user?.result.role == 'BUSINESS') && (
-              <a href={ClientURL}> Client</a>
-            )}
-              <a href={AdminURL}> AdminManage</a> */}
-           {/* <a href={UploadURL} className="text-white mb-0">
-             Manage Listing
-          </a> */}
+              
           <a  href={AutURL} onClick={logout} className="text-white mb-0">
                Logout
           </a>

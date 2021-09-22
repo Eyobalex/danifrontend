@@ -25,7 +25,7 @@ const App = () => {
         <Router>
     {/* <Switch> */}
       
-      <HomeRoute exact path='/' component={Home}/>
+      <Route exact path='/' component={Home}/>
        
        <Route exact path='/posts' component={Home}/>
       

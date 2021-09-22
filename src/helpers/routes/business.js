@@ -7,17 +7,15 @@ export const BusinessRoute = ({
   component: Component,
   ...rest
 }) => {
-  const user = useRef(null);
   const dispatch = useDispatch();
-  user.current = JSON.parse(localStorage.getItem('profile'));
   return (  
     <Route
       {...rest}
       render={props => {
-        if ( user?.current?.role === 'BUSINESS') {
+        if ( JSON.parse(localStorage.getItem('profile'))?.result.role === 'BUSINESS') {
           return <Component {...props} />;
         } else {
-          dispatch({type: LOGOUT})
+          // dispatch({type: LOGOUT})
           return (
             <Redirect
               to={{
