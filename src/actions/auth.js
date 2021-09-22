@@ -4,12 +4,31 @@ import * as api from '../api/index';
 export const signin = (formData, router) => async (dispatch) => {
   try {
     const { data } = await api.signIn(formData);
-
     dispatch({ type: AUTH, data });
 
-    router.push('/');
+    switch (data.result.role) {
+      case "ADMIN":
+        router.push('/adminDashboard');
+          
+        break;
+    
+      case "BUSINESS":
+        router.push('/clientDashboard');
+        break;
+    
+      case "CLIENT":
+        router.push('/');
+        break;
+
+      default:
+        break;
+    }
+
   } catch (error) {
-    console.log(error);
+    // for (let er in error) {
+    //   console.log(er);
+    // }
+    console.log(error.response.data)
   }
 };
 
