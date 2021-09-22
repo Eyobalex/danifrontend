@@ -23,7 +23,7 @@ export const PostComment = ({postId})=> {
             dispatch(rate( postId, postData.rating ));
         }
         // alert(postId);
-        console.log(postData);
+        // console.log(postData);
     }
     const clear = (e) => {
         setPostData({name: '', comment: '', email: ''})

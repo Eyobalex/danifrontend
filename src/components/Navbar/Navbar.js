@@ -3,6 +3,7 @@ import { AppBar, Typography, Toolbar, Avatar, Button } from '@material-ui/core';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import decode from 'jwt-decode';
+// import { Link } from 'react-router-dom';
 
 import * as actionType from '../../constants/actionTypes';
 import useStyles from './styles';
@@ -66,7 +67,7 @@ const Navbar = () => {
         <ul className="site-menu js-clone-nav mr-auto d-none d-lg-block">
           {/* you can see admin page with out login on below link*/}
           <li>
-          <a  style={{marginRight:3}}  href={AdminURL}> Manage</a>
+          {/* <a  style={{marginRight:3}}  href={AdminURL}> Manage</a> */}
       
              
     
@@ -75,12 +76,16 @@ const Navbar = () => {
         {user?.result ? (
           
           <li  >
-
-           <a href={AdminURL}> AdminManage</a>
-           <a href={ClientURL}> Client</a>
-           <a href={UploadURL} className="text-white mb-0">
+            {/* {(user?.result.role == 'ADMIN') && (
+              <a href={AdminURL}> AdminManage</a>
+            )}
+            {(user?.result.role == 'BUSINESS') && (
+              <a href={ClientURL}> Client</a>
+            )}
+              <a href={AdminURL}> AdminManage</a> */}
+           {/* <a href={UploadURL} className="text-white mb-0">
              Manage Listing
-          </a>
+          </a> */}
           <a  href={AutURL} onClick={logout} className="text-white mb-0">
                Logout
           </a>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Paper, Typography, CircularProgress, Divider } from '@material-ui/core/';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
@@ -25,6 +25,7 @@ const ListingSingle = () => {
   const classes = useStyles();
   const { id } = useParams();
 
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   
   useEffect(() => {
     dispatch(getCategories());
@@ -157,13 +158,12 @@ const ListingSingle = () => {
                     
                     <span className="review">({post.averageRating} )({post.ratingCount} Reviews)</span>
                   </p>
-                  
-                     <ul className="topside">
-                    
-                    
-                    
-                      <li>  <a href="#" data-target="#mymodel" data-toggle="modal"><span className="fa fa-comments" ></span>Leave a review</a></li> 
-                  </ul>
+                  {(user & user.role == "CLIENT") && (
+                    <ul className="topside">
+                    <li>  <a href="#" data-target="#mymodel" data-toggle="modal"><span className="fa fa-comments" ></span>Leave a review</a></li> 
+                </ul>
+                  )}
+                     
    
                  
                 </div>
@@ -177,7 +177,8 @@ const ListingSingle = () => {
                   <h3>Insert Review</h3>
         
                   </div>
-                   
+
+                  
                   <div className="modal-body">
 
                     <PostComment postId={id} />
