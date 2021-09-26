@@ -197,7 +197,7 @@ import Category from "./Category";
       <div id="content">
         
         <img src={"images/ads2.jpg"} alt="Image" className="img-fluid" style= {{paddingBottom: 5, borderStyle: "groove", borderRadius: 3, height: 600}}/>  
-        <img src={"images/ads2.jpg"} alt="Image" className="img-fluid" style={{paddingBottom: 5, borderStyle: "groove", borderRadius: 3, height: 600}}/>
+        
        
       </div>
     </div>

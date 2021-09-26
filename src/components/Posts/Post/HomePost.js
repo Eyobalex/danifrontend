@@ -42,12 +42,12 @@ const HomePost = ({ post }) => {
 <div className="text p-4" >
 <h3 className="h5 text-black" style={{fontWeight: 'bold'}}>{post.companyName.substring(0, 30)}</h3>
 
-<span style={{fontWeight: "bolder", fontSize: "small"}} className="category ">Listed in <a href="#"> Agriculture</a></span>
+<span style={{fontWeight: "bolder", fontSize: "small"}} className="category ">Listed in :</span>
 <br/>
 <p className="mb-0" style={{fontSize: "small", fontFamily: '"Arial", Helvetica , sansSerif'}} >{post.description.substring(0, 150)}</p>
 <br/>
 <div style={{fontSize:"medium"}} className="row" >
-<div className="fa fa-location-arrow "style={{marginRight: 15}}> Addis Ababa, ET</div> <div className="fa fa-phone" style={{marginRight: 15}}>0925001221</div> <div className="fa fa-globe"><a href="#">Visit website</a></div>
+<div className="fa fa-location-arrow "style={{marginRight: 15}}> Addis Ababa, ET</div> <div className="fa fa-phone" style={{marginRight: 15}}>{post.phoneNumber}</div> <div className="fa fa-globe"><a href="#">Visit website</a></div>
 </div> 
 </div>
 

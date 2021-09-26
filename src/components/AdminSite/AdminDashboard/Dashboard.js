@@ -10,7 +10,7 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import HomeFragment from '../Fragments/HomeFragment'
+
 import CategoryFragment from '../Fragments/CategoryFragment'
 import {Category, Group, Home, PowerOff, Receipt} from '@material-ui/icons';
 import ListingFragment from '../Fragments/ListingFragment'
@@ -52,8 +52,7 @@ export default function ClippedDrawer() {
   const loadFragmnet=()=>{
 
     switch(fragment){
-    case "HOME":
-           return <HomeFragment/>
+   
     case "CATEGORY":
       return <CategoryFragment/>
     case "LISTING":
@@ -104,12 +103,7 @@ export default function ClippedDrawer() {
         <div className={classes.drawerContainer}>
           <List>
         
-              <ListItem button onClick={e=>setfragment("HOME")}>
-                <ListItemIcon>
-                    <Home/>  
-             </ListItemIcon>
-                <ListItemText primary="Home" />
-              </ListItem>
+    
               <ListItem button onClick={e=>setfragment("CATEGORY")}>
                 <ListItemIcon>
                     <Category/>  

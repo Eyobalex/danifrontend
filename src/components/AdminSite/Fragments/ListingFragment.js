@@ -38,12 +38,12 @@ const Listings = () => {
                                 {post?.companyName}
                             </TableCell>
                             <TableCell align="right">{post?.creator}</TableCell>
-                            <TableCell align="right">{post?.logo}</TableCell>
+                            <TableCell align="right"><img src={post.logo } style={{marginTop:8, marginRight: 12, position:"sticky", marginLeft: 12, width: 100, height: 100}}/></TableCell>
                             <TableCell align="right">{post?.location}</TableCell>
                             <TableCell align="right">{post?.description}</TableCell>
                             <TableCell align="right">{post?.map}</TableCell>
                             <TableCell align="right">{post?.phoneNumber}</TableCell>
-                            <TableCell align="right">{post?.category}</TableCell>
+                            <TableCell align="right">{post.category?.name}</TableCell>
                             <TableCell align="right">{post?.averageRating}</TableCell>
                             <TableCell align="right">{post?.createdAt}</TableCell>
                             <TableCell align="right"><Button onClick={(e) => dispatch(deletePost(post._id))} color="primary" >delete</Button></TableCell>

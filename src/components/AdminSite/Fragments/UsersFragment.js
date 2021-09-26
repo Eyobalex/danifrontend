@@ -117,6 +117,7 @@ const Users = () => {
                 >
                 <option value="CLIENT">Client</option>
                 <option value="ADMIN">Admin</option>
+                <option value="BUSINESS"> BUSINESS</option>
                 </Select>
             </FormControl>
 

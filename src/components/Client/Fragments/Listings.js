@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCategories } from '../../../actions/category';
 import { createPost,updatePost,deletePost, getOwnPosts, uploadProductImage } from '../../../actions/posts';
 import useStyles from './styles'
-
+import FileBase from 'react-file-base64';
 export default function Listings() {
 
     const [open, setOpen]= useState(false);
@@ -24,6 +24,7 @@ export default function Listings() {
       setCurrentListing(null);
       setFormData({
         companyName: "",
+        logo:'',
         description: "",
         map: "",
         phoneNumber: "",
@@ -98,6 +99,8 @@ export default function Listings() {
                 type="text"
                 fullWidth
               />
+                   <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setFormData({ ...formData, logo: base64 })} /></div>
+
               <TextField
                 margin="dense"
                 id="map"
@@ -210,7 +213,7 @@ export default function Listings() {
                         <TableHead>
                         <TableRow>
                             <TableCell>Name</TableCell>
-                            <TableCell align="right">Creator</TableCell>
+                            <TableCell align="right">companyName</TableCell>
                             <TableCell align="right">Logo</TableCell>
                             <TableCell align="right">Location</TableCell>
                             <TableCell align="right">Description</TableCell>
@@ -228,10 +231,10 @@ export default function Listings() {
                             <TableCell component="th" scope="row">
                                 {/* {post?.productImage} */}
                             </TableCell>
-                            <TableCell align="right">{post?.creator}</TableCell>
-                            <TableCell align="right">{post?.logo}</TableCell>
+                            <TableCell align="right">{post?.companyName}</TableCell>
+                            <TableCell align="right"><img src={post.logo } style={{marginTop:8, marginRight: 12, position:"sticky", marginLeft: 12, width: 100, height: 100}}/></TableCell>
                             <TableCell align="right">{post?.location}</TableCell>
-                            <TableCell align="right">{post?.description}</TableCell>
+                            <TableCell align="right">{post?.description.substring(0, 30)+"..."}</TableCell>
                             <TableCell align="right"><ul>{post?.productImages?.map( img =>{
                                 return <li> <img src={`http://localhost:5000/images/${img?.filename}`} alt="" height={50} width={50}/> <span>Delete</span></li>
                               })}</ul></TableCell>

@@ -147,7 +147,7 @@ const ListingSingle = () => {
                   
                   
                   <a style={{float: "right", marginRight: 50, marginTop: 25}} href="#" className="bookmark"><span style={{color: "red"}} className="icon-heart"></span></a>
-                  <h3  style={{paddingTop: 25 }}><a href="listings-single.html">DES General Trading PLC</a></h3>
+                  <h3  style={{paddingTop: 25 }}>{post.companyName.substring(0, 30)}</h3>
                   
                   <p style={{paddingBottom: 5}} className="mb-0">
                     <span className={(post.averageRating > 0) ? "icon-star text-warning" : "icon-star text-silver"}></span>
@@ -196,8 +196,7 @@ const ListingSingle = () => {
               <h4 ><span className="fa fa-bars"></span> Business Detail </h4>
               <p style={{fontSize: 15, fontFamily: "Cambria, Cochin, Georgia, Times, serif"}}>
               
-                DES General Trading Private Limited Company is manufacturer of melamine, steel wool, and aluminum utensils in Ethiopia. We also import plastic, household materials, electronic materials, Food staff, Plastic Items and soon and export various agricultural products such as white bean, green bean, coffee, spices and so on. Established in 1997, Des General Trading has 15 million investment capital, 20 million birr in total asset and 138 million birr annual sales. DES is an ever expanding company which is in the process of diversifying its scope of business 
-                from import and manufacturing to export and service sectors. Currently, it is planning to establish one of the biggest soap factory in the country to add one more to the existing 3 manufacturing plants. Our Suppliers are internationally renowned companies from Europe, Asia & Far East countries, including, FORMUSA Int’l FLC, Thai Plastic Partner, Seascop Exports and M & S Steel wires. The company has secured successful business.
+              {post.description}
               </p>
 
 
