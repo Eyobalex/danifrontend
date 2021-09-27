@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
@@ -20,7 +20,10 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const classes = useStyles();
-
+  const {errors} = useSelector(state =>{
+    console.log("auth data",state.auth.errors);
+    return state.auth;
+  } );
   const [showPassword, setShowPassword] = useState(false);
   const handleShowPassword = () => setShowPassword(!showPassword);
 
@@ -79,7 +82,9 @@ const SignUp = () => {
 </div>
 </div> 
 
-
+{(errors)&& (
+       <p className="text-danger">{errors}</p>
+     )}
     <Container component="main" maxWidth="xs">
       <Paper className={classes.paper} elevation={6}>
        

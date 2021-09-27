@@ -29,4 +29,8 @@ export const EDIT_CATEGORY = 'EDIT_CATEGORY';
 
 export const GET_LISTING = 'GET_LISTING';
 export const GET_OWN_POSTS = 'GET_OWN_POSTS';
+export const ERROR = 'ERROR';
 export const UPLOAD_PRODUCT_IMAGE = 'UPLOAD_PRODUCT_IMAGE';
+export const FETCH_BY_CATEGORY = 'FETCH_BY_CATEGORY';
+
+

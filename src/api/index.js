@@ -54,3 +54,6 @@ export const signUp = (formData)=>{
     return API.post('/user/signup', formData)}
 
 export const activateHandle=(token)=>API.get(`/activate/${token}`) 
+
+
+export const postsByCategory = category => API.get(`/posts/category?catid=${category}`)

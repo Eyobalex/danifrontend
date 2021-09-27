@@ -15,7 +15,7 @@ import useStyles from './styles';
 
 import {getCategories} from '../../actions/category';
 
-import { getPostsBySearch } from '../../actions/posts';
+import { getPostsBySearch, postsByCategory } from '../../actions/posts';
 
 import Pagination from '../Pagination';
 import Navbar from "../Navbar/Navbar";
@@ -38,13 +38,14 @@ import Category from "./Category";
     const page = query.get('page') || 1;
     const searchQuery = query.get('searchQuery');
     const descriptionQuery=query.get('descriptionQuer');
-    const [currentId, setCurrentId] = useState(0);
-    const dispatch = useDispatch();
-    const location = useLocation();
     const [search, setSearch] = useState('');
     const [description, setSearchh] = useState('');
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    const [currentId, setCurrentId] = useState(0);
+    const [category, setCategory] = useState(null);
+    const location = useLocation();
+    const dispatch = useDispatch();
     const history = useHistory();
-   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
  /* const newlist= this.state.lisdata.map(item => {
     return <ListingCard key={item.id} product={item}/>
   })*/
@@ -64,7 +65,10 @@ import Category from "./Category";
 
   useEffect(() => {
     dispatch(getCategories());
-  },[dispatch])
+    if (category) {
+      dispatch(postsByCategory(category));
+    }
+  },[dispatch, category])
   const { categories} = useSelector((state) => state.category);
 
   const logout = () => {
@@ -82,9 +86,14 @@ import Category from "./Category";
 
       if (decodedToken.exp * 1000 < new Date().getTime()) logout();
     }
-
     setUser(JSON.parse(localStorage.getItem('profile')));
+
+
+    
+
   }, [location]);
+
+
   
      return(
       
@@ -170,7 +179,7 @@ import Category from "./Category";
         
             <h2 style={{fontWeight:"bolder"}} >Directories</h2>
           
-          <Category categories={categories} />
+          <Category categories={categories} setCategory={setCategory} />
          
         
     </div>

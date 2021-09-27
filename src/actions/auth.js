@@ -1,4 +1,4 @@
-import { AUTH } from '../constants/actionTypes';
+import { AUTH, ERROR } from '../constants/actionTypes';
 import * as api from '../api/index';
 
 export const signin = (formData, router) => async (dispatch) => {
@@ -9,7 +9,6 @@ export const signin = (formData, router) => async (dispatch) => {
     switch (data.result.role) {
       case "ADMIN":
         router.push('/adminDashboard');
-          
         break;
     
       case "BUSINESS":
@@ -20,15 +19,14 @@ export const signin = (formData, router) => async (dispatch) => {
         router.push('/');
         break;
 
+      
+
       default:
         break;
     }
 
   } catch (error) {
-    // for (let er in error) {
-    //   console.log(er);
-    // }
-    console.log(error.response.data)
+    console.log(dispatch({type:ERROR, payload: error.response.data.message}));
   }
 };
 

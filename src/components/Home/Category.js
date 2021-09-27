@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Category({categories}) {
+export default function Category({categories, setCategory}) {
     return (
         <div>
             
@@ -10,7 +10,7 @@ export default function Category({categories}) {
             <div className="col-lg-41">
             {categories.map((category, i) => {
                return( <li key={category._id}>
-                    <a  href="catlists.html"><span className={category.fa_icon} ></span> {category.name}</a>
+                    <p className="text-primary"   onClick={() => setCategory(category._id)}><span className={category.fa_icon} ></span> {category.name}</p>
                 </li>)
             })}
             

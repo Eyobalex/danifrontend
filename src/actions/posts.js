@@ -12,6 +12,8 @@ import {
   GET_LISTING,
   GET_OWN_POSTS,
   UPLOAD_PRODUCT_IMAGE,
+  FETCH_BY_CATEGORY,
+  ERROR,
 } from "../constants/actionTypes";
 import * as api from "../api/index.js";
 
@@ -125,3 +127,15 @@ export const uploadProductImage = (id, productImage) => async (dispatch) => {
     dispatch({ type: UPLOAD_PRODUCT_IMAGE, payload: data });
   } catch (error) {}
 };
+
+export const postsByCategory = (category) => async (dispatch) => {
+  try {
+    const {data} = await api.postsByCategory(category);
+
+    console.log('catsearch', data);
+    dispatch({ type: FETCH_BY_CATEGORY, payload: data });
+
+  } catch (error) {
+    dispatch({type:ERROR, payload: error.response.data.message}) 
+  }
+}
